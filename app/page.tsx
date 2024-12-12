@@ -1,66 +1,86 @@
-import { Container, Filters, ProductCart } from "@/components/Shared";
+"use client";
+
+import { DecorateElem } from "@/components/Shared";
+import { Accessibility } from "lucide-react";
+
+import decor from "@/public/justDecorateElem.json";
+import { AdverComp } from "@/components/Shared/adver";
 import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
+  Card,
+  CardContent,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
 } from "@/components/ui";
 
-import pianos from "@/public/pianos.json";
+interface DecorItem {
+  title: string;
+  textBelow: string;
+  icon?: React.ReactNode;
+}
 
 export default function Home() {
+  const handleButtonClick = () => {
+    alert("Вы нажали кнопку!");
+  };
+
+  const itemsCarusel = ["/giga1.jpg", "/giga2.jpg", "/giga3.jpg"];
+
   return (
     <>
-      <Container className="py-6 ">
-        {/*Фильтрация*/}
-        <div className="flex gap-[60px]">
-          <div className="w-[250px]">
-            <Filters />
-          </div>
+      {/* Фоновое изображение с текстом и кнопкой */}
+      <div
+        className="relative flex items-center justify-center h-screen bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/imges/mainPage1.webp')",
+        }}
+      >
+        <div className="absolute text-center text-white">
+          <h1 className="text-4xl font-bold mb-4">
+            Тут скоро будет какая-нить воодушевляющая надпись, но пока ее нет
+          </h1>
+          <button
+            onClick={handleButtonClick}
+            className="text-lg px-6 py-3 bg-orange-500 rounded-lg text-white hover:bg-orange-600 transition"
+          >
+            Заказать инструмент
+          </button>
+        </div>
+      </div>
 
-          {/*Список товаров*/}
-          <div className="flex-1">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {pianos.map((i, index) => (
-                <ProductCart
-                  id={i.id}
-                  imgUrl={i.imgUrl}
-                  PianoPrice={i.PianoPrice}
-                  PianoName={i.PianoName}
-                  StrikethroughPrice={i.StrikethroughPrice}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="pt-4">
-          <Pagination>
-            <PaginationContent>
-              <PaginationItem>
-                <PaginationPrevious href="" />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="">1</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="">2</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink href="">3</PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationEllipsis />
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationNext href="" />
-              </PaginationItem>
-            </PaginationContent>
-          </Pagination>
-        </div>
-      </Container>
+      {/* Секция DecorateElem */}
+      <div className="flex flex-wrap gap-4 p-6">
+        {(decor as DecorItem[]).map((item, index) => (
+          <DecorateElem
+            key={index}
+            className="border-[5px] border-gray-500 p-4 "
+            icon={<Accessibility />}
+            title={item.title}
+            textBelow={item.textBelow}
+          />
+        ))}
+      </div>
+
+      {/* Секция с каруселью */}
+      <Carousel>
+        <CarouselContent>
+          {itemsCarusel.map((image, index) => (
+            <CarouselItem key={index}>
+              <div className="p-1">
+                <Card>
+                  <CardContent className="flex aspect-square items-center justify-center p-6">
+                    <img
+                      src={image}
+                      alt={`Изображение ${index + 1}`}
+                      className="h-auto w-full object-cover rounded-md"
+                    />
+                  </CardContent>
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
     </>
   );
 }

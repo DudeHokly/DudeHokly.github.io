@@ -1,3 +1,5 @@
+import { Card } from "./card";
+
 export { Button } from "./button";
 export { Input } from "./input";
 export { Slider } from "./slider";
@@ -18,3 +20,18 @@ export {
   PaginationNext,
   PaginationPrevious,
 } from "./pagination";
+export {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./carousel";
+export {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./card";
