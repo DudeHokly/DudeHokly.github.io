@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Container } from "./Container";
 import { Accessibility, Dribbble, Handshake, Piano } from "lucide-react";
-import { Button } from "../ui/button";
 
 interface Props {
   className?: string;

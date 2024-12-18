@@ -128,8 +128,8 @@ export default function Home() {
           />
         ))}
       </div>
-      {/* чет связанное с рекламой */}
-      <AdverComp />
+      {/* чет связанное с рекламой где три иконки*/}
+      <AdverComp className="bg-no-repeat bg-cover bg-center" />
 
       {/* Каруселька */}
       <div className="relative">

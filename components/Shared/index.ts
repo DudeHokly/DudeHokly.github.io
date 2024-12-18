@@ -9,3 +9,5 @@ export { ProductCart } from "./ProductCard";
 export { ModeToggle } from "./ModeToggle";
 export { DecorateElem } from "./justDecorateElem";
 export { NewsLenta } from "./newsLenta";
+export { LilComp } from "./lilComp";
+export { Reviews } from "./Reviews";

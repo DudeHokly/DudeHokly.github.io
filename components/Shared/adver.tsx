@@ -1,8 +1,9 @@
 import React from "react";
 import { cn } from "@/lib/utils";
 import { Accessibility } from "lucide-react";
-import { LilComp } from "./lilComp";
+
 import { Title } from "./title";
+import { LilComp } from "./lilComp";
 
 interface Props {
   className?: string;
@@ -43,7 +44,7 @@ export const AdverComp: React.FC<Props> = ({ className }) => {
             className="font-semibold"
             size="md"
           />
-          <p className="text-white">
+          <p className="text-black ">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam esse
             voluptatem voluptates nisi delectus incidunt, nemo iste doloribus
             accusamus facere reiciendis, inventore ipsum pariatur reprehenderit
