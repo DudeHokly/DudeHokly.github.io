@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 
-const RegisterPage: NextPage = () => {
+const SamplePage: NextPage = () => {
   return (
     <>
       <h1 className="text-center">Hi dude</h1>
@@ -8,4 +8,4 @@ const RegisterPage: NextPage = () => {
   );
 };
 
-export default RegisterPage;
+export default SamplePage;
