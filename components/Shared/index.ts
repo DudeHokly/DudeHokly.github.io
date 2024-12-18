@@ -8,3 +8,4 @@ export { RangeSlider } from "./RangeSlider";
 export { ProductCart } from "./ProductCard";
 export { ModeToggle } from "./ModeToggle";
 export { DecorateElem } from "./justDecorateElem";
+export { NewsLenta } from "./newsLenta";

@@ -10,92 +10,94 @@ interface Props {
   className?: string;
 }
 
-export const Header: React.FC<React.PropsWithChildren<Props>> = ({
-  className,
-}) => {
+const menuItems = [
+  {
+    label: "Каталог",
+    links: ["Гитары", "Клавишные", "Ударные", "Смычковые", "Электроника"],
+  },
+  {
+    label: "Акции",
+    links: [
+      "Скидки недели",
+      "Новинки",
+      "Хиты продаж",
+      "Подарочные сертификаты",
+    ],
+  },
+  {
+    label: "Производители",
+    links: ["Yamaha", "Casio", "Roland", "Fender", "Gibson"],
+  },
+  {
+    label: "Услуги",
+    links: ["Ремонт инструментов", "Настройка гитар", "Обучение игре"],
+  },
+  {
+    label: "Контакты",
+    links: ["Магазины", "Связаться с нами", "Обратная связь"],
+  },
+];
+
+export const Header: React.FC<Props> = ({ className }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [activeMenu, setActiveMenu] = useState<number | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const menuItems = [
-    {
-      label: "Магазин",
-      links: ["Последние пополнения", "Yamaha", "Casio", "Kurzweil", "Roland"],
-    },
-    {
-      label: "В разработке1",
-      links: ["Секция 1.1", "Секция 1.2", "Секция 1.3"],
-    },
-    {
-      label: "В разработке2",
-      links: ["Секция 2.1", "Секция 2.2", "Секция 2.3"],
-    },
-    {
-      label: "В разработке3",
-      links: ["Секция 3.1", "Секция 3.2", "Секция 3.3"],
-    },
-    {
-      label: "Поддержка",
-      links: ["Контакты", "Частые вопросы", "Гарантия"],
-    },
-  ];
 
   return (
     <header
       className={cn(
-        `fixed top-0 left-0 w-full z-50 transition-all ${
-          isScrolled ? "bg-white shadow-lg" : "bg-transparent"
-        }`,
+        "fixed top-0 left-0 w-full z-50 transition-all",
+        isScrolled
+          ? "bg-white shadow-lg text-black py-2"
+          : "bg-transparent text-white",
         className
       )}
     >
       <Container className="flex items-center justify-between max-w-7xl mx-auto px-6">
-        <Link href="/ItemsPage" className="flex items-center text-black">
-          <Piano className="mr-2 " />
-          <h1 className="text-3xl ">PianoDude</h1>
+        <Link href="/ItemsPage" className="flex items-center">
+          <Piano className="mr-2" />
+          <h1 className="text-3xl">PianoDude</h1>
         </Link>
 
         <nav className="relative">
-          <ul className="flex space-x-8 text-black text-[17px]">
-            {menuItems.map((menu) => (
+          <ul className="flex space-x-8 text-[17px]">
+            {menuItems.map((item, index) => (
               <li
-                key={menu.label}
-                className="relative"
-                onMouseEnter={() => setActiveDropdown(menu.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
+                key={index}
+                className="relative group"
+                onMouseEnter={() => setActiveMenu(index)}
+                onMouseLeave={() => setActiveMenu(null)}
               >
-                <a href="#" className="hover:text-black transition">
-                  {menu.label}
-                </a>
-
-                {/* Dropdown */}
+                <span
+                  className={cn(
+                    "cursor-pointer transition-colors hover:text-black"
+                  )}
+                >
+                  {item.label}
+                </span>
                 <div
                   className={cn(
-                    "absolute left-0 top-full w-screen bg-white shadow-lg transition-transform duration-300 ease-out h-0",
-                    activeDropdown === menu.label
-                      ? "opacity-100 translate-y-0 h-[300px]"
-                      : "opacity-0 translate-y-[-20px]"
+                    "absolute left-0 w-[200px] bg-white/90 overflow-hidden transition-all duration-300",
+                    activeMenu === index ? "h-[210px]" : "h-0"
                   )}
-                  // style={{ height: "300px" }}
                 >
-                  <div className="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 gap-4">
-                    {menu.links.map((link) => (
-                      <a
-                        key={link}
-                        href="#"
-                        className="block text-gray-700 hover:text-black transition"
-                      >
-                        {link}
-                      </a>
+                  <ul className="flex flex-col items-start p-6 space-y-2">
+                    {item.links.map((link, linkIndex) => (
+                      <li key={linkIndex}>
+                        <Link
+                          href={`/${link}`}
+                          className="text-black hover:underline"
+                        >
+                          {link}
+                        </Link>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               </li>
             ))}

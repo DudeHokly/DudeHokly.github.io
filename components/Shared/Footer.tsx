@@ -33,7 +33,7 @@ export const Footer: React.FC<React.PropsWithChildren<Props>> = ({
   className,
 }) => {
   return (
-    <footer className={cn("bg-gray-100 py-8", className)}>
+    <footer className={cn("bg-gray-100 py-8 px-[200px] ", className)}>
       <Container className="flex justify-between flex-wrap gap-6">
         {/* Левая часть с логотипом и контактами */}
         <div className="">

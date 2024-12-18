@@ -1,6 +1,6 @@
 "use client";
 
-import { DecorateElem } from "@/components/Shared";
+import { DecorateElem, NewsLenta } from "@/components/Shared";
 import { Accessibility } from "lucide-react";
 
 import decor from "@/public/justDecorateElem.json";
@@ -11,7 +11,11 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui";
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface DecorItem {
   title: string;
@@ -24,15 +28,79 @@ export default function Home() {
     alert("Вы нажали кнопку!");
   };
 
-  const itemsCarusel = ["/giga1.jpg", "/giga2.jpg", "/giga3.jpg"];
+  const itemsCarusel = [
+    "/imges/mainPage.jpg",
+    "/imges/mainPage1.jpg",
+    "/imges/mainPage3.jpg",
+    "/imges/carusel1.webp",
+    "/imges/carusel2.webp",
+  ];
+
+  const newsData = [
+    {
+      id: 1,
+      title: "Новость 1",
+      text: "Краткое описание первой новости.",
+      backgroundImage: "/imges/adNews1.jpg",
+    },
+    {
+      id: 2,
+      title: "Новость 2",
+      text: "Краткое описание второй новости.",
+      backgroundImage: "/imges/adNews2.jpg",
+    },
+    {
+      id: 3,
+      title: "Новость 3",
+      text: "Краткое описание второй новости.",
+      backgroundImage: "/imges/adNews3.jpg",
+    },
+    {
+      id: 4,
+      title: "Новость 4",
+      text: "Краткое описание второй новости.",
+      backgroundImage: "/imges/adNews4.jpg",
+    },
+    {
+      id: 5,
+      title: "Новость 5",
+      text: "Краткое описание второй новости.",
+      backgroundImage: "/imges/adNews5.jpg",
+    },
+    {
+      id: 6,
+      title: "Новость 6",
+      text: "Краткое описание второй новости.",
+      backgroundImage: "/imges/adNews6.jpg",
+    },
+    {
+      id: 7,
+      title: "Новость 7",
+      text: "Краткое описание второй новости.",
+      backgroundImage: "/imges/adNews7.jpg",
+    },
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  useEffect(() => {
+    setActiveIndex(Math.floor(itemsCarusel.length / 2));
+  }, []);
+
+  const handlePrevious = () => {
+    setActiveIndex((prev) => (prev === 0 ? itemsCarusel.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev === itemsCarusel.length - 1 ? 0 : prev + 1));
+  };
 
   return (
     <>
-      {/* Фоновое изображение с текстом и кнопкой */}
+      {/* header элем */}
       <div
         className="relative flex items-center justify-center h-screen bg-cover bg-center"
         style={{
-          backgroundImage: "url('/imges/mainPage1.webp')",
+          backgroundImage: "url('/imges/mainPage1.png')",
         }}
       >
         <div className="absolute text-center text-white">
@@ -48,39 +116,56 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Секция DecorateElem */}
-      <div className="flex flex-wrap gap-4 p-6">
+      {/* Секция DecorateElem т.е. три прикольных элема */}
+      <div className="flex flex-wrap justify-center gap-4 py-4 px-2">
         {(decor as DecorItem[]).map((item, index) => (
           <DecorateElem
             key={index}
-            className="border-[5px] border-gray-500 p-4 "
+            className="border-[5px] border-gray-500 p-4 w-[500px]"
             icon={<Accessibility />}
             title={item.title}
             textBelow={item.textBelow}
           />
         ))}
       </div>
+      {/* чет связанное с рекламой */}
+      <AdverComp />
 
-      {/* Секция с каруселью */}
-      <Carousel>
-        <CarouselContent>
-          {itemsCarusel.map((image, index) => (
-            <CarouselItem key={index}>
-              <div className="p-1">
-                <Card>
-                  <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <img
-                      src={image}
-                      alt={`Изображение ${index + 1}`}
-                      className="h-auto w-full object-cover rounded-md"
-                    />
-                  </CardContent>
-                </Card>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
+      {/* Каруселька */}
+      <div className="relative">
+        <Carousel>
+          <CarouselPrevious onClick={handlePrevious} />
+          <CarouselContent>
+            {itemsCarusel.map((image, index) => (
+              <CarouselItem
+                key={index}
+                className={cn(
+                  " transition-all duration-500 ease-in-out",
+                  index === activeIndex
+                    ? "scale-100 opacity-100 z-10"
+                    : "scale-75 opacity-50 blur-sm"
+                )}
+              >
+                <div className="relative p-4">
+                  <Card>
+                    <CardContent className="flex items-center justify-center">
+                      <img
+                        src={image}
+                        alt={`Изображение ${index + 1}`}
+                        className="w-[100%] h-[550px] object-contain rounded-md"
+                      />
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselNext onClick={handleNext} />
+        </Carousel>
+      </div>
+
+      {/* Лента новостей */}
+      <NewsLenta news={newsData} />
     </>
   );
 }

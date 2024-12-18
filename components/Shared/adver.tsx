@@ -14,29 +14,29 @@ export const AdverComp: React.FC<Props> = ({ className }) => {
       icon: <Accessibility />,
       title: "Какой-то текст Тайтл",
       description:
-        "Описание чегото и Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam esse voluptatem voluptates nisi delectus incidunt, nemo iste doloribus.",
+        "Описание чегото и Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     },
     {
       icon: <Accessibility />,
       title: "Какой-то текст Тайтл",
       description:
-        "Описание чегото и Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam esse voluptatem voluptates nisi delectus incidunt, nemo iste doloribus.",
+        "Описание чегото и Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     },
     {
       icon: <Accessibility />,
       title: "Какой-то текст Тайтл",
       description:
-        "Описание чегото и Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam esse voluptatem voluptates nisi delectus incidunt, nemo iste doloribus.",
+        "Описание чегото и Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
     },
   ];
   return (
     <div
-      className={cn("py-[130px] px-[70px] ", className)}
+      className={cn("relative w-full h-[700px]", className)}
       style={{
-        backgroundImage: "url('imges/mainPage3.webp')",
+        backgroundImage: "url('imges/mainPage3.jpg')",
       }}
     >
-      <div className="w-[700px] ">
+      <div className="absolute top-[90px] left-[240px] p-5 bg-white/30 shadow-lg rounded-lg max-w-[600px]">
         <div className="">
           <Title
             text="Что то важное наверно"
@@ -48,14 +48,6 @@ export const AdverComp: React.FC<Props> = ({ className }) => {
             voluptatem voluptates nisi delectus incidunt, nemo iste doloribus
             accusamus facere reiciendis, inventore ipsum pariatur reprehenderit
             est in illum, consequuntur nesciunt debitis! Doloribus, libero quod
-            ab pariatur voluptatem dolores quos sit culpa excepturi eum rem.
-            Quae ullam tempore est quod dolorem eligendi debitis excepturi
-            molestias maiores earum! Molestiae recusandae voluptatum fugit porro
-            nobis cupiditate error at in id maxime explicabo modi quis
-            doloremque animi, voluptates rem iste. Tempore commodi maxime est,
-            nulla culpa ullam molestiae, voluptas expedita aspernatur
-            voluptatum, dignissimos voluptatem? Inventore illo at ipsa quas
-            porro incidunt minus laborum consequuntur.
           </p>
         </div>
         <div className="">
