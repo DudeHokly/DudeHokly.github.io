@@ -1,6 +1,5 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { Accessibility } from "lucide-react";
 import { LilComp } from "./lilComp";
 
 interface Props {

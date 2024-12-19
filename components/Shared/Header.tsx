@@ -53,15 +53,26 @@ export const Header: React.FC<Props> = ({ className }) => {
       className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all",
         isScrolled
-          ? "bg-white shadow-lg text-black py-2"
-          : "bg-transparent text-white",
+          ? "bg-slate-50 shadow-lg opacity-90 backdrop-blur-2xl text-black py-2"
+          : "bg-white/50 text-black backdrop-blur-md py-3",
         className
       )}
     >
       <Container className="flex items-center justify-between max-w-7xl mx-auto px-6">
-        <Link href="/ItemsPage" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <Piano className="mr-2" />
           <h1 className="text-3xl">PianoDude</h1>
+          <ul>
+            <Link href="/AboutUs">
+              <li>About Us</li>
+            </Link>
+            <Link href="/FakeReviews">
+              <li>Fake Reviews</li>
+            </Link>
+            <Link href="/ItemsPage">
+              <li>Items Page</li>
+            </Link>
+          </ul>
         </Link>
 
         <nav className="relative">
@@ -75,7 +86,7 @@ export const Header: React.FC<Props> = ({ className }) => {
               >
                 <span
                   className={cn(
-                    "cursor-pointer transition-colors hover:text-black"
+                    "cursor-pointer transition-colors hover:text-yellow-400"
                   )}
                 >
                   {item.label}

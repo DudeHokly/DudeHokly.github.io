@@ -75,7 +75,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
             </AccordionItem>
           ))}
         </Accordion>
-        <div className="flex gap-2">
+        <div className="flex gap-2 mt-5 justify-center">
           <Button>Сбросить</Button>
           <Button>Применить</Button>
         </div>

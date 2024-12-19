@@ -4,8 +4,8 @@ import { NextPage } from "next";
 const AboutUs: NextPage = () => {
   return (
     <>
-      <div className="">
-        <div className="p-4 shadow-md w-[1200px] my-[50px] m-auto">
+      <div className="pt-[80px]">
+        <div className="p-[40px] shadow-2xl rounded-3xl w-[1200px] mb-[50px] m-auto">
           <div className="mt-2">
             <Title text={"Наша команда"} />
             <div className="grid grid-cols-3 gap-6 mt-6">

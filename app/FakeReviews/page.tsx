@@ -53,11 +53,13 @@ const FakeReviews: NextPage = () => {
           </div>
         )}
       </div>
-      <div className="">Черта</div>
+      <div className="h-1 bg-black mt-[40px] w-[1200px] m-auto"></div>
       <div className="flex flex-col items-center justify-center py-[50px]">
-        <Title text={"Отзывы"} size="md" />
-        <div className="">
-          <Reviews />
+        <div className="shadow-lg p-10 rounded-3xl bg-slate-300">
+          <Title text={"Отзывы"} size="md" className="text-center" />
+          <div className="">
+            <Reviews />
+          </div>
         </div>
       </div>
       <div className="flex flex-col items-center justify-center py-[50px]">
