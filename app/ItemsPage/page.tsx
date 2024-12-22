@@ -38,9 +38,9 @@ const ItemsPage: NextPage = () => {
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col items-center">
       {/* Hero-секция */}
-      <div className="bg-blue-100 w-full h-[200px] flex items-center justify-center mt-[64px]">
-        <h2 className="text-3xl font-semibold text-blue-600">
-          Welcome to the Piano Store!
+      <div className="bg-gradient-to-r from-[#008080] to-[#00b3b3] w-full h-[200px] flex items-center justify-center mt-[64px]">
+        <h2 className="text-3xl font-semibold text-black">
+          Добро пожаловать в the Piano Store!
         </h2>
       </div>
       <div className="w-full max-w-[1500px] pt-[30px]">

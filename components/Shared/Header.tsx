@@ -6,39 +6,60 @@ import { Piano } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-interface Props {
-  className?: string;
+interface MenuItem {
+  label: { name: string; path: string };
+  links?: { name: string; path: string }[];
 }
 
-const menuItems = [
+const menuItems: MenuItem[] = [
   {
-    label: "Каталог",
-    links: ["Гитары", "Клавишные", "Ударные", "Смычковые", "Электроника"],
-  },
-  {
-    label: "Акции",
+    label: { name: "Каталог", path: "/ItemsPage" },
     links: [
-      "Скидки недели",
-      "Новинки",
-      "Хиты продаж",
-      "Подарочные сертификаты",
+      { name: "Гитары", path: "/ItemsPage" },
+      { name: "Клавишные", path: "/ItemsPage" },
+      { name: "Ударные", path: "/ItemsPage" },
+      { name: "Смычковые", path: "/ItemsPage" },
+      { name: "Электроника", path: "/ItemsPage" },
     ],
   },
   {
-    label: "Производители",
-    links: ["Yamaha", "Casio", "Roland", "Fender", "Gibson"],
+    label: { name: "Акции", path: "/ItemsPage" },
+    links: [
+      { name: "Скидки недели", path: "/ItemsPage" },
+      { name: "Новинки", path: "/ItemsPage" },
+      { name: "Хиты продаж", path: "/ItemsPage" },
+      { name: "Подарочные сертификаты", path: "/ItemsPage" },
+    ],
   },
   {
-    label: "Услуги",
-    links: ["Ремонт инструментов", "Настройка гитар", "Обучение игре"],
+    label: { name: "Производители", path: "/ItemsPage" },
+    links: [
+      { name: "Yamaha", path: "/ItemsPage" },
+      { name: "Casio", path: "/ItemsPage" },
+      { name: "Roland", path: "/ItemsPage" },
+      { name: "Fender", path: "/ItemsPage" },
+      { name: "Gibson", path: "/ItemsPage" },
+    ],
   },
   {
-    label: "Контакты",
-    links: ["Магазины", "Связаться с нами", "Обратная связь"],
+    label: { name: "Услуги", path: "/FakeReviews" },
+    links: [
+      { name: "Ремонт инструментов", path: "/FakeReviews" },
+      { name: "Настройка гитар", path: "/FakeReviews" },
+      { name: "Обучение игре", path: "/FakeReviews" },
+    ],
+  },
+  {
+    label: { name: "Контакты", path: "/AboutUs" },
+    links: [
+      { name: "Магазины", path: "/AboutUs" },
+      { name: "Связаться с нами", path: "/AboutUs" },
+      { name: "Обратная связь", path: "/AboutUs" },
+    ],
   },
 ];
 
-export const Header: React.FC<Props> = ({ className }) => {
+export const Header: React.FC<{ className?: string }> = ({ className }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<number | null>(null);
 
@@ -59,20 +80,9 @@ export const Header: React.FC<Props> = ({ className }) => {
       )}
     >
       <Container className="flex items-center justify-between max-w-7xl mx-auto px-6">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center hover:text-[#008080]">
           <Piano className="mr-2" />
-          <h1 className="text-3xl">PianoDude</h1>
-          <ul>
-            <Link href="/AboutUs">
-              <li>About Us</li>
-            </Link>
-            <Link href="/FakeReviews">
-              <li>Fake Reviews</li>
-            </Link>
-            <Link href="/ItemsPage">
-              <li>Items Page</li>
-            </Link>
-          </ul>
+          <h1 className="text-3xl ">PianoDude</h1>
         </Link>
 
         <nav className="relative">
@@ -84,32 +94,35 @@ export const Header: React.FC<Props> = ({ className }) => {
                 onMouseEnter={() => setActiveMenu(index)}
                 onMouseLeave={() => setActiveMenu(null)}
               >
-                <span
-                  className={cn(
-                    "cursor-pointer transition-colors hover:text-yellow-400"
-                  )}
+                <Link
+                  href={item.label.path}
+                  className="cursor-pointer transition-colors hover:text-[#008080]"
                 >
-                  {item.label}
-                </span>
-                <div
-                  className={cn(
-                    "absolute left-0 w-[200px] bg-white/90 overflow-hidden transition-all duration-300",
-                    activeMenu === index ? "h-[210px]" : "h-0"
-                  )}
-                >
-                  <ul className="flex flex-col items-start p-6 space-y-2">
-                    {item.links.map((link, linkIndex) => (
-                      <li key={linkIndex}>
-                        <Link
-                          href={`/${link}`}
-                          className="text-black hover:underline"
-                        >
-                          {link}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  {item.label.name}
+                </Link>
+                {item.links && (
+                  <div
+                    className={cn(
+                      "absolute left-0 w-[200px] bg-white/90 overflow-hidden transition-all duration-300 shadow-lg",
+                      activeMenu === index
+                        ? "h-auto opacity-100"
+                        : "h-0 opacity-0"
+                    )}
+                  >
+                    <ul className="flex flex-col items-start p-6 space-y-2">
+                      {item.links.map((link, linkIndex) => (
+                        <li key={linkIndex}>
+                          <Link
+                            href={link.path}
+                            className="text-black hover:underline"
+                          >
+                            {link.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </li>
             ))}
           </ul>

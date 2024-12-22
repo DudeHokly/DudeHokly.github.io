@@ -8,6 +8,7 @@ interface Props {
   title: string;
   description: string;
   className?: string;
+  titleClassName?: string;
   iconClassName?: string;
   imageClassName?: string;
   descriptionClassName?: string;
@@ -19,6 +20,7 @@ export const LilComp: React.FC<Props> = ({
   imageSrc,
   title,
   description,
+  titleClassName,
   iconClassName,
   imageClassName,
   descriptionClassName,
@@ -52,7 +54,7 @@ export const LilComp: React.FC<Props> = ({
 
       {/* Контент справа */}
       <div>
-        <Title text={title} size="md" />
+        <Title text={title} size="md" className={titleClassName} />
         <p className={cn("text-sm text-black mt-1", descriptionClassName)}>
           {description}
         </p>

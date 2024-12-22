@@ -100,16 +100,16 @@ export default function Home() {
       <div
         className="relative flex items-center justify-center h-screen bg-cover bg-center"
         style={{
-          backgroundImage: "url('/imges/mainPage1.png')",
+          backgroundImage: "url('/imges/mainPage.webp')",
         }}
       >
-        <div className="absolute text-center text-white">
-          <h1 className="text-4xl font-bold mb-4">
+        <div className="absolute text-center bg-white/50 text-black backdrop-blur-md opacity-95 shadow-lg p-5 rounded-3xl">
+          <h1 className="text-3xl font-bold mb-4">
             Тут скоро будет какая-нить воодушевляющая надпись, но пока ее нет
           </h1>
           <button
             onClick={handleButtonClick}
-            className="text-lg px-6 py-3 bg-orange-500 rounded-lg text-white hover:bg-orange-600 transition"
+            className="text-lg px-6 py-3  bg-[#008080] rounded-lg text-white hover:bg-yellow-400 transition"
           >
             Заказать инструмент
           </button>
@@ -121,7 +121,7 @@ export default function Home() {
         {(decor as DecorItem[]).map((item, index) => (
           <DecorateElem
             key={index}
-            className="border-[5px] border-gray-500 p-4 w-[500px]"
+            className="border-[5px] border-[#008080] p-4 w-[500px]"
             icon={<Accessibility />}
             title={item.title}
             textBelow={item.textBelow}

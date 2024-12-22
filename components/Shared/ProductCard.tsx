@@ -25,7 +25,7 @@ export const ProductCart: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        "group transform transition duration-500 hover:scale-105 border-solid border-2 border-sky-500 rounded-xl p-5 justify-self-center",
+        "group transform transition duration-500 hover:scale-105 border-solid border-2 border-[#008080] rounded-xl p-5 justify-self-center",
         className
       )}
     >

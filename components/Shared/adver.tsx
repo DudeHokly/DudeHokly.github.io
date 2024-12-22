@@ -34,14 +34,14 @@ export const AdverComp: React.FC<Props> = ({ className }) => {
     <div
       className={cn("relative w-full h-[700px]", className)}
       style={{
-        backgroundImage: "url('imges/mainPage3.jpg')",
+        backgroundImage: "url('imges/mainPageAdverBg.webp')",
       }}
     >
-      <div className="absolute top-[90px] left-[240px] p-5 bg-white/30 shadow-lg rounded-lg max-w-[600px]">
+      <div className="absolute top-[90px] left-[240px] p-5 bg-white/80 shadow-3xl rounded-lg max-w-[600px]">
         <div className="">
           <Title
             text="Что то важное наверно"
-            className="font-semibold"
+            className="font-semibold text-[#008080]"
             size="md"
           />
           <p className="text-black ">
@@ -58,6 +58,7 @@ export const AdverComp: React.FC<Props> = ({ className }) => {
               icon={i.icon}
               title={i.title}
               description={i.description}
+              titleClassName="text-[#008080]"
             />
           ))}
         </div>
