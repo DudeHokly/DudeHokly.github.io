@@ -2,10 +2,11 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 import { Title } from "./title";
+import { Accessibility } from "lucide-react";
 
 interface Props {
   className?: string;
-  icon: string;
+  icon?: string;
   title: string;
   textBelow: string;
 }
@@ -23,7 +24,10 @@ export const DecorateElem: React.FC<Props> = ({
         className
       )}
     >
-      <i className="pr-7 ">{icon}</i>
+      <i className="pr-7 ">
+        <Accessibility />
+      </i>
+
       <div className=" items-center">
         <Title text={title} size="sm" />
         <p>{textBelow}</p>

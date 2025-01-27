@@ -6,6 +6,7 @@ interface Props {
   className?: string;
 }
 
+
 const footerTrying = {
   Информация: [
     "Главная",
@@ -26,7 +27,10 @@ const footerTrying = {
     "О нас",
   ],
   Каталог: ["Клавишные", "Караоке", "Звук", "Дисконт", "Оплата"],
-};
+} as const;
+
+type FooterTrying = typeof footerTrying;
+type FooterCategory = keyof FooterTrying;
 
 export const Footer: React.FC<React.PropsWithChildren<Props>> = ({
   className,
@@ -73,21 +77,24 @@ export const Footer: React.FC<React.PropsWithChildren<Props>> = ({
 
         {/* Правая часть с навигационными ссылками */}
         <div className="w-full md:w-2/3 flex justify-between">
-          {Object.keys(footerTrying).map((category, index) => (
-            <div key={index} className="space-y-4">
-              <h2 className="text-lg font-semibold">{category}</h2>
-              {footerTrying[category].map((item, idx) => (
-                <a
-                  key={idx}
-                  href="#"
-                  className="block text-white hover:text-blue-200 transition-colors"
-                  aria-label={item}
-                >
-                  {item}
-                </a>
-              ))}
-            </div>
-          ))}
+          {Object.keys(footerTrying).map((category) => {
+            const key = category as FooterCategory; // Приведение типа
+            return (
+              <div key={key} className="space-y-4">
+                <h2 className="text-lg font-semibold">{category}</h2>
+                {footerTrying[key].map((item, idx) => (
+                  <a
+                    key={idx}
+                    href="#"
+                    className="block text-white hover:text-blue-200 transition-colors"
+                    aria-label={item}
+                  >
+                    {item}
+                  </a>
+                ))}
+              </div>
+            );
+          })}
         </div>
       </Container>
 

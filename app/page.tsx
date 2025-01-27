@@ -122,7 +122,6 @@ export default function Home() {
           <DecorateElem
             key={index}
             className="border-[5px] border-[#008080] p-4 w-[500px]"
-            icon={<Accessibility />}
             title={item.title}
             textBelow={item.textBelow}
           />
