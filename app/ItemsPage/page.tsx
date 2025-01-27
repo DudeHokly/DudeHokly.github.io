@@ -12,6 +12,7 @@ import {
 } from "@/components/ui";
 
 import pianos from "@/public/pianos.json";
+import { NextPage } from "next";
 
 const ItemsPage: NextPage = () => {
   const filtersRef = useRef<HTMLDivElement>(null);

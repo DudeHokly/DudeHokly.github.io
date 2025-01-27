@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
 interface DecorItem {
   title: string;
   textBelow: string;
-  icon?: React.ReactNode;
+  icon?: string;
 }
 
 export default function Home() {
