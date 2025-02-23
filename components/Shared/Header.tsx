@@ -2,9 +2,21 @@
 
 import { cn } from "@/lib/utils";
 import { Container } from "./Container";
-import { Piano } from "lucide-react";
+import { Piano, ShoppingCart } from "lucide-react";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+
+import * as React from "react";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface MenuItem {
   label: { name: string; path: string };
@@ -44,9 +56,9 @@ const menuItems: MenuItem[] = [
   {
     label: { name: "Услуги", path: "/FakeReviews" },
     links: [
-      { name: "Ремонт инструментов", path: "/FakeReviews" },
-      { name: "Настройка гитар", path: "/FakeReviews" },
-      { name: "Обучение игре", path: "/FakeReviews" },
+      { name: "Ремонт инструментов", path: "/Maintenance" },
+      { name: "Настройка гитар", path: "/Maintenance" },
+      { name: "Обучение игре", path: "/TeachingPage" },
     ],
   },
   {
@@ -57,9 +69,14 @@ const menuItems: MenuItem[] = [
       { name: "Обратная связь", path: "/AboutUs" },
     ],
   },
+  {
+    label: { name: "Авторизоваться", path: "/Authorization" },
+  },
 ];
 
 export const Header: React.FC<{ className?: string }> = ({ className }) => {
+  const { setTheme } = useTheme();
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<number | null>(null);
 
@@ -125,6 +142,30 @@ export const Header: React.FC<{ className?: string }> = ({ className }) => {
                 )}
               </li>
             ))}
+            <div className="hover:text-[#008080] cursor-pointer">
+              <Link href="/ShopingCarting">
+                <ShoppingCart />
+              </Link>
+            </div>
+            <div className="">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" size="icon">
+                    <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                    <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                    <span className="sr-only">Toggle theme</span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onClick={() => setTheme("light")}>
+                    Light
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("dark")}>
+                    Dark
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </ul>
         </nav>
       </Container>

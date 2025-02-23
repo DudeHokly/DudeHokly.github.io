@@ -127,6 +127,7 @@ export default function Home() {
           />
         ))}
       </div>
+      
       {/* чет связанное с рекламой где три иконки*/}
       <AdverComp className="bg-no-repeat bg-cover bg-center" />
 

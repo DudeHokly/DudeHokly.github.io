@@ -78,7 +78,7 @@ const ItemsPage: NextPage = () => {
         </div>
 
         {/* Пагинация */}
-        <div className="mt-8 flex justify-center">
+        <div className="mt-8 flex justify-center pb-[25px]">
           <div className="bg-white shadow-md rounded-lg py-6 px-4 w-full">
             <Pagination>
               <PaginationContent>
