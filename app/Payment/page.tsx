@@ -47,7 +47,7 @@ const PaymentForm = () => {
   };
 
   return (
-    <div className="py-[70px]">
+    <section className="py-[70px]">
       <Card className="w-full max-w-md mx-auto mt-10 p-6 shadow-lg">
         <CardHeader>
           <CardTitle>Оплата заказа</CardTitle>
@@ -145,7 +145,7 @@ const PaymentForm = () => {
           </Form>
         </CardContent>
       </Card>
-    </div>
+    </section>
   );
 };
 

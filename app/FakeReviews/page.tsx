@@ -14,7 +14,7 @@ const FakeReviews: NextPage = () => {
 
   return (
     <>
-      <div
+      <section
         className="relative h-screen bg-no-repeat bg-cover bg-center z-0 flex justify-center items-center"
         style={{ backgroundImage: "url('/imges/Reviews.webp')" }}
       >
@@ -52,7 +52,7 @@ const FakeReviews: NextPage = () => {
             </div>
           </div>
         )}
-      </div>
+      </section>
       <div className="h-1 bg-black mt-[40px] w-[1200px] m-auto"></div>
       <div className="flex flex-col items-center justify-center py-[50px]">
         <div className="shadow-lg p-10 rounded-3xl bg-slate-300">

@@ -58,7 +58,7 @@ const Cart = () => {
   );
 
   return (
-    <div className="pt-[60px] pb-[60px]">
+    <section className="pt-[60px] pb-[60px]">
       <Card className="w-full max-w-lg mx-auto mt-10 p-6 shadow-lg">
         <CardHeader>
           <CardTitle>Корзина</CardTitle>
@@ -115,7 +115,7 @@ const Cart = () => {
           )}
         </CardContent>
       </Card>
-    </div>
+    </section>
   );
 };
 

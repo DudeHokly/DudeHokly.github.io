@@ -53,7 +53,7 @@ const AuthForm = () => {
   };
 
   return (
-    <div className="pt-[60px] pb-[60px]">
+    <section className="pt-[60px] pb-[60px]">
       <Card className="w-full max-w-md mx-auto mt-10 p-6 shadow-lg">
         <CardHeader>
           <CardTitle>{isLogin ? "Вход" : "Регистрация"}</CardTitle>
@@ -138,7 +138,7 @@ const AuthForm = () => {
           </Form>
         </CardContent>
       </Card>
-    </div>
+    </section>
   );
 };
 

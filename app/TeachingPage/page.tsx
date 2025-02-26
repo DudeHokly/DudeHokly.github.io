@@ -5,7 +5,7 @@ import React from "react";
 
 function TeachingPage() {
   return (
-    <div className="max-w-4xl mx-auto pt-[80px] pb-[60px]">
+    <section className="max-w-4xl mx-auto pt-[80px] pb-[60px]">
       {/* Заголовок */}
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold">
@@ -87,7 +87,7 @@ function TeachingPage() {
           </AspectRatio>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

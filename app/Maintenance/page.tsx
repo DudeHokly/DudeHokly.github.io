@@ -52,7 +52,7 @@ const InstrumentSetup = () => {
   };
 
   return (
-    <div className="pt-[80px] pb-[50px]">
+    <section className="pt-[80px] pb-[50px]">
       <div className="container mx-auto">
         <h1 className="text-2xl font-bold text-center mb-6">
           Настройка музыкальных инструментов
@@ -193,7 +193,7 @@ const InstrumentSetup = () => {
           </CardContent>
         </Card>
       </div>
-    </div>
+    </section>
   );
 };
 
