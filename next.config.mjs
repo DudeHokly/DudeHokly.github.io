@@ -5,4 +5,4 @@ const nextConfig = {
   assetPrefix: "/DudeHokly.github.io/",
 };
 
-module.exports = nextConfig;
+export default nextConfig;
