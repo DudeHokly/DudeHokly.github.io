@@ -47,7 +47,7 @@ const InstrumentSetup = () => {
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     console.log("Данные формы:", data);
   };
 

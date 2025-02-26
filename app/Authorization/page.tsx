@@ -40,11 +40,16 @@ const AuthForm = () => {
 
   const form = useForm({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-      confirmPassword: "", // Нужно только для регистрации
-    },
+    defaultValues: isLogin
+      ? {
+          email: "",
+          password: "",
+        }
+      : {
+          email: "",
+          password: "",
+          confirmPassword: "",
+        },
   });
 
   // Обработчик отправки формы
